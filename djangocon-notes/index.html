@@ -5,19 +5,22 @@
     <title>DjangoCon Europe 2022 - Notes</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="/schedule.js"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
 </head>
 <body>
-    <h1>DjangoCon Europe 2022</h1>
+    <div class="p-4 mx-auto prose">
+        <h1>DjangoCon Europe 2022</h1>
 
-    <div id="app">
-        <ul>
-            <template v-for="talk in talks">
-                <li v-if="talk.persons.length">
-                    <h2>{{ talk.title }}</h2>
-                    <p>{{ talk.abstract }}</p>
-                </li>
-            </template>
-        </ul>
+        <div id="app">
+            <ul>
+                <template v-for="talk in talks">
+                    <li v-if="talk.persons.length">
+                        <h2>{{ talk.title }}</h2>
+                        <p>{{ talk.abstract }}</p>
+                    </li>
+                </template>
+            </ul>
+        </div>
     </div>
 
     <script>

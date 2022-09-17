@@ -3,14 +3,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DjangoCon Europe 2022 - Notes</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="/schedule.js"></script>
 </head>
 <body>
     <h1>DjangoCon Europe 2022</h1>
 
+    <div id="app">
+        {{ message }}
+    </div>
 
     <script>
-        console.log(schedule);
+        const { createApp } = Vue
+          createApp({
+            data() {
+              return {
+                message: "Hello, DjangoCon!"
+              }
+            }
+          }).mount('#app')
     </script>
 </body>
 </html>

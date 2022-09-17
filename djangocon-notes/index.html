@@ -10,15 +10,23 @@
     <h1>DjangoCon Europe 2022</h1>
 
     <div id="app">
-        {{ message }}
+        <ul>
+            <template v-for="talk in talks">
+                <li v-if="talk.persons.length">
+                    <h2>{{ talk.title }}</h2>
+                    <p>{{ talk.abstract }}</p>
+                </li>
+            </template>
+        </ul>
     </div>
 
     <script>
         const { createApp } = Vue
+        const { Auditorium: auditorium_talks } = schedule.schedule.conference.days[0].rooms
           createApp({
             data() {
               return {
-                message: "Hello, DjangoCon!"
+                talks: auditorium_talks
               }
             }
           }).mount('#app')

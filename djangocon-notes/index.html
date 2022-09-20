@@ -16,6 +16,7 @@
                 <template v-for="talk in talks">
                     <li v-if="talk.persons.length">
                         <h2>{{ talk.title }}</h2>
+                        <h4>{{ talk.persons.map(p => p.public_name).join(', ') }}</h4>
                         <p>{{ talk.abstract }}</p>
                         <button @click="showDetails(talk)" class="px-2 py-1 rounded border">Show Details</button>
                     </li>
@@ -24,6 +25,7 @@
             <div class="flex-1 sticky top-0 px-4">
                 <template v-if="selectedTalk">
                     <h2>{{ selectedTalk.title }}</h2>
+                    <h4>{{ selectedTalk.persons.map(p => p.public_name).join(', ') }}</h4>
                     <p>{{ selectedTalk.description }}</p>
                 </template>
             </div>

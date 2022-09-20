@@ -33,8 +33,7 @@
                         :id="`notes-{selectedTalk.id}`"
                         rows="10"
                         class="w-full"
-                        :value="notes[selectedTalk.id]"
-                        @change="ev => notes[selectedTalk.id] = ev.target.value"
+                        v-model="notes[selectedTalk.id]"
                     ></textarea>
                 </template>
             </div>

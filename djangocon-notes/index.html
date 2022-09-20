@@ -24,6 +24,7 @@
                 </template>
             </ul>
             <div class="flex-1 h-full overflow-y-scroll px-4">
+                <span class="font-bold">Notes taken: {{ Object.keys(notes).length }} / {{ talks.length }}</span>
                 <template v-if="selectedTalk">
                     <h2>{{ selectedTalk.title }}</h2>
                     <h4>{{ selectedTalk.speakers }}</h4>

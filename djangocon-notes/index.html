@@ -12,7 +12,7 @@
         <h1>DjangoCon Europe 2022</h1>
 
         <div id="app" class="flex items-start">
-            <ul class="flex-1">
+            <ul class="flex-1 h-full overflow-y-scroll">
                 <template v-for="talk in talks">
                     <li v-if="talk.persons.length">
                         <h2>{{ talk.title }}</h2>
@@ -23,7 +23,7 @@
                     </li>
                 </template>
             </ul>
-            <div class="flex-1 sticky top-0 px-4">
+            <div class="flex-1 h-full overflow-y-scroll px-4">
                 <template v-if="selectedTalk">
                     <h2>{{ selectedTalk.title }}</h2>
                     <h4>{{ selectedTalk.speakers }}</h4>

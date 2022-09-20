@@ -1,6 +1,8 @@
 <script>
 import schedule from "./assets/schedule";
 
+import {} from "./assets/main.css";
+
 export default {
   data() {
     return {

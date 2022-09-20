@@ -28,6 +28,12 @@
                     <h2>{{ selectedTalk.title }}</h2>
                     <h4>{{ selectedTalk.speakers }}</h4>
                     <p>{{ selectedTalk.description }}</p>
+                    <textarea
+                        :name="`notes-{selectedTalk.id}`"
+                        :id="`notes-{selectedTalk.id}`"
+                        rows="10"
+                        class="w-full"
+                    ></textarea>
                 </template>
             </div>
         </div>

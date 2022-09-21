@@ -1,5 +1,4 @@
 <script>
-import schedule from "./assets/schedule";
 import TalkItem from "./components/TalkItem.vue";
 
 import {} from "./assets/main.css";
@@ -9,6 +8,7 @@ export default {
     return {
       selectedTalk: null,
       notes: {},
+      schedule: null,
     };
   },
   components: {
@@ -19,6 +19,13 @@ export default {
       this.selectedTalk = talk;
     },
   },
+  mounted() {
+    fetch(
+      "https://pretalx.evolutio.pt/djangocon-europe-2022/schedule/export/schedule.json"
+    )
+      .then((resp) => resp.json())
+      .then((data) => (this.schedule = data));
+  },
   computed: {
     talks() {
       const talks = this.auditorium_talks.map((t) => {
@@ -28,8 +35,9 @@ export default {
       return talks;
     },
     auditorium_talks() {
+      if (!this.schedule) return [];
       const { Auditorium: auditorium_talks } =
-        schedule.schedule.conference.days[0].rooms;
+        this.schedule.schedule.conference.days[0].rooms;
       return auditorium_talks;
     },
   },
@@ -37,13 +45,14 @@ export default {
 </script>
 
 <template>
-  <ul class="flex-1 h-full overflow-y-scroll">
+  <ul class="flex-1 h-full overflow-y-scroll" v-if="schedule">
     <template v-for="talk in talks">
       <li v-if="talk.persons.length" :key="talk.id">
         <talk-item :talk="talk" @select="showDetails(talk)"></talk-item>
       </li>
     </template>
   </ul>
+  <div v-else class="flex-1">Loading...</div>
   <div class="flex-1 h-full overflow-y-scroll px-4">
     <span class="font-bold"
       >Notes taken: {{ Object.keys(notes).length }} / {{ talks.length }}</span

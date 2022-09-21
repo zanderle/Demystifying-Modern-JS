@@ -57,7 +57,8 @@
 
 - Instead of hardcoding talks.json, let's fetch it
 
-
 ## 6. Outro and questions (5 min)
 
-- ...
+- The ecosystem is huge, but much easier to navigate than it used to be
+- The concepts we talked about are used in most other frontend frameworks as well
+- Where to go from here

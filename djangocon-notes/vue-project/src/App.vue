@@ -1,5 +1,6 @@
 <script>
 import schedule from "./assets/schedule";
+import TalkItem from "./components/TalkItem.vue";
 
 import {} from "./assets/main.css";
 
@@ -9,6 +10,9 @@ export default {
       selectedTalk: null,
       notes: {},
     };
+  },
+  components: {
+    TalkItem,
   },
   methods: {
     showDetails(talk) {
@@ -36,15 +40,7 @@ export default {
   <ul class="flex-1 h-full overflow-y-scroll">
     <template v-for="talk in talks">
       <li v-if="talk.persons.length" :key="talk.id">
-        <h2>{{ talk.title }}</h2>
-        <h4>{{ talk.speakers }}</h4>
-        <p>{{ talk.abstract }}</p>
-        <button @click="showDetails(talk)" class="px-2 py-1 rounded border">
-          Show Details
-        </button>
-        <a :href="talk.url" class="text-blue-400 hover:text-blue-500 mx-4"
-          >See talk on pretalx</a
-        >
+        <talk-item :talk="talk" @select="showDetails(talk)"></talk-item>
       </li>
     </template>
   </ul>
